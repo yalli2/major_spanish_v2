@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전공 기초 스페인어 · Español básico — 인터랙티브 학습 (Lección 1–12)</title>
+<meta name="description" content="고등학교 전공 기초 스페인어(Español básico) 교재 12과 전체를 위한 수업용 인터랙티브 학습 사이트">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common/style.css?v=1">
+<style>
+.hub-hero{background:linear-gradient(120deg,#c2410c,#f26a21 45%,#f6a04d)}
+.lcard.zero .lh{font-size:46px}
+.toc-note{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 0}.toc-note span{background:#fff7e6;border:1px solid #f3dca8;border-radius:999px;padding:3px 10px;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="hub-wrap">
+  <div class="hub-hero">
+    <span class="st">🇪🇸</span>
+    <h1>Español básico</h1>
+    <p>전공 기초 스페인어 · 12과 인터랙티브 학습 — 과를 골라 시작하세요.</p>
+    <div class="hub-name"><label for="nm">👩‍🎓 이름 · Nombre</label><input id="nm" class="inp" placeholder="이름을 쓰세요"><span id="tot" class="small" style="color:#fff3d6"></span></div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h3>✍️ 이렇게 공부해요</h3>
+    <div class="legend">
+      <div>📘 각 과: 핵심 학습 목표 → Diálogo · Lectura → Vocabulario · Contesta → Amplía tu vocabulario</div>
+      <div>📐 Gramática y ejercicios: 교재 표 그대로 정리 + <b>연습문제</b> 전 문항</div>
+      <div>🧩 <b>Actividades</b>: 사진 연결 · 표 분류 · V/F · 묘사하기 + <b>Cultura</b></div>
+      <div>🎯 <b>¡Compruébalo!</b> 쓰기 모의시험 (100점) + 빨간 펜 첨삭 · 📊 <b>Resultados</b> 성적표</div>
+      <div>✍️ 채점 표식: <b style="color:#2e9d5b">○</b> 정답 · <b style="color:#e08a00">△</b> 악센트·부호 · <b style="color:#d6202f">✕</b> 오답</div>
+      <div>🔊 대화·본문은 원어민 녹음(없으면 브라우저 음성)으로 들을 수 있어요</div>
+    </div>
+    <p class="small">기록은 이 기기의 브라우저에만 저장됩니다. 아래 카드의 막대는 과별 진도(푼 비율)입니다.</p>
+  </div>
+  <div id="grid" class="hub-grid"></div>
+</div>
+<footer class="foot">다인원격평생교육직업학원 · 후안샘 스페인어 · 고등학교 전공 기초 스페인어 (Español básico) 학습용</footer>
+<script>
+(function () {
+  const L = [
+    ['00', 'Alfabeto y pronunciación', '🔤🗣️', 'linear-gradient(135deg,#fdfbfb,#ebedee)', '알파벳 · 발음 · 음절 · 강세'],
+    ['01', '¡Hola!', '👋🙋‍♀️', 'linear-gradient(135deg,#ffd27a,#f79a5b)', '인사말 · 현재형 규칙동사 · 명사의 성·수 · 관사'],
+    ['02', 'María es de España', '🇪🇸🗣️', 'linear-gradient(135deg,#8fd3f4,#84fab0)', '형용사 · 소유사 · 지시사 · ser와 estar'],
+    ['03', 'La tienda está al lado del ayuntamiento', '🏪🏛️', 'linear-gradient(135deg,#a1c4fd,#c2e9fb)', '의문사(1) · 위치 표현 · 불규칙동사'],
+    ['04', '¿Cuántos árboles hay en el jardín?', '🌳🏡', 'linear-gradient(135deg,#96e6a1,#d4fc79)', '직접목적대명사 · estar와 hay · 의문사(2)'],
+    ['05', 'Queremos vino de la casa', '🍷🥘', 'linear-gradient(135deg,#f6d365,#fda085)', '간접목적대명사 · gustar · 큰 수 · querer, poder'],
+    ['06', 'Me levanto a las seis de la mañana', '⏰🪥', 'linear-gradient(135deg,#ffecd2,#fcb69f)', '재귀동사 · 의무 표현 · e→ie 불규칙동사'],
+    ['07', '¿Me sienta bien esta blusa rosa?', '👚🛍️', 'linear-gradient(135deg,#fbc2eb,#f6d365)', '가격 묻기 · saber와 conocer · quedar · 서수'],
+    ['08', 'Estoy yendo al banco', '🏦🚶', 'linear-gradient(135deg,#cfd9df,#9fb8d6)', '현재진행형 · 목적대명사 위치 · o→ue'],
+    ['09', 'Por fin, mañana es el día', '✈️🌦️', 'linear-gradient(135deg,#f6a04d,#f26a21)', '미래(ir a) · 날씨 · 날짜·요일'],
+    ['10', 'Hemos hecho el camino a Santiago de Compostela', '🥾🐚', 'linear-gradient(135deg,#e0c3fc,#8ec5fc)', '과거분사 · 현재완료'],
+    ['11', 'Me lo pasé bien en la cena de Nochebuena', '🎄🍽️', 'linear-gradient(135deg,#fddb92,#d1fdff)', '단순과거 · 비교급'],
+    ['12', 'De joven trabajaba en una compañía multinacional', '🏢🌍', 'linear-gradient(135deg,#84fab0,#8fd3f4)', '불완료과거 · 단순과거와 구분']
+  ];
+  let sum = {}; try { sum = JSON.parse(localStorage.getItem('msv2_sum') || '{}'); } catch (e) { }
+  const nm = document.getElementById('nm');
+  try { nm.value = localStorage.getItem('msv2_name') || ''; } catch (e) { }
+  nm.oninput = () => { try { localStorage.setItem('msv2_name', nm.value); } catch (e) { } };
+  let dn = 0, nn = 0;
+  document.getElementById('grid').innerHTML = L.map(([n, t, e, bg, k]) => {
+    const s = sum['L' + n];
+    const pct = s && s.n ? Math.round(s.d / s.n * 100) : 0;
+    if (s) { dn += s.d; nn += s.n; }
+    return `<a class="lcard${n === '00' ? ' zero' : ''}" href="L${n}/"><div class="lh" style="background:${bg}">${e}<div class="badge"><small>${n === '00' ? 'Inicio' : 'Lección'}</small>${n === '00' ? 'A' : n}</div></div>
+      <div class="lbody"><h2>${t}</h2><p>${k}</p>
+      <div class="lp"><div class="bar"><i style="width:${pct}%"></i></div><b>${pct}%</b>${s && s.e != null ? `<span title="최근 모의시험">🎯${s.e}</span>` : ''}</div></div></a>`;
+  }).join('');
+  if (nn) document.getElementById('tot').textContent = `· 지금까지 ${dn}문항을 풀었어요!`;
+})();
+</script>
+</body>
+</html>
